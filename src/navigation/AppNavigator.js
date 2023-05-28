@@ -5,6 +5,7 @@ import Card from '../components/Card';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NewsDetails from '../screens/NewsDetails';
+
 const Tab = createBottomTabNavigator();
 // const Stack = createNativeStackNavigator();
 export default function AppNavigator() {
