@@ -1,36 +1,39 @@
 import * as React from 'react';
-
+import { Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import NewsDetails from '../screens/NewsDetails';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import Card from '../components/Card';
-
-const Stack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
-
-function HomeNavigator() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Card" component={Card} options={{ title: 'Card' }} />
-      <Stack.Screen
-        name="NewsDetails"
-        component={NewsDetails}
-        options={{ title: 'News Details' }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-function AppNavigator() {
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import NewsDetails from '../screens/NewsDetails';
+const Tab = createBottomTabNavigator();
+// const Stack = createNativeStackNavigator();
+export default function AppNavigator() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator initialRouteName="Card">
-        <Drawer.Screen name="Card" component={Card} />
-        <Drawer.Screen name="PressBuzz" component={HomeNavigator} />
-      </Drawer.Navigator>
+      <Tab.Navigator initialRouteName="Card">
+        <Tab.Screen
+          name="Card"
+          component={Card}
+          options={{
+            title: 'Scribble',
+            tabBarLabel: 'Home',
+            tabBarIcon: () => (
+              <Image
+                style={styles.navHome}
+                source={require('../../assets/components/navigation-bottom/Home.png')}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen component={NewsDetails} name="NewsDetails" />
+      </Tab.Navigator>
+      {/* <NewsDetails name="NewsDetails" /> */}
     </NavigationContainer>
   );
 }
-export default AppNavigator;
+const styles = StyleSheet.create({
+  navHome: {
+    width: 30,
+    height: 30,
+  },
+});

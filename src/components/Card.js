@@ -7,11 +7,12 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import { NewsContext } from '../Context/context';
 import Loading from './Loading';
 
 export default function Card() {
+  const navigation = useNavigation();
   const { news } = useContext(NewsContext);
   const newsArticles = news && news.articles ? news.articles : [];
   return (
@@ -19,7 +20,11 @@ export default function Card() {
       <Suspense fallback={<Loading />}>
         {newsArticles.map((e) => {
           return (
-            <View style={styles.card} key={e.title}>
+            <TouchableOpacity
+              style={styles.card}
+              key={e.title}
+              onPress={() => navigation.navigate('NewsDetails')}
+            >
               <View style={styles.imageWrapper}>
                 <Image
                   source={{
@@ -34,7 +39,7 @@ export default function Card() {
               <View style={styles.descriptionWrapper}>
                 <Text style={styles.description}>{e.description}</Text>
               </View>
-            </View>
+            </TouchableOpacity>
           );
         })}
       </Suspense>
