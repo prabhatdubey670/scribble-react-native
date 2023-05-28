@@ -1,23 +1,47 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import React, { useContext, Suspense } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { NewsContext } from '../Context/context';
-import { ScrollView } from 'react-native';
+import Loading from './Loading';
+
 export default function Card() {
   const { news } = useContext(NewsContext);
+  const newsArticles = news && news.articles ? news.articles : [];
   return (
-    <>
-      {news.map((e, id) => {
-        return (
-          <ScrollView>
-            <View key={e.id}>{e.title}</View>
-          </ScrollView>
-        );
-      })}
-    </>
-    //
+    <ScrollView>
+      <Suspense fallback={<Loading />}>
+        {newsArticles.map((e) => {
+          return (
+            <View style={styles.card} key={e.title}>
+              <View style={styles.imageWrapper}>
+                <Image
+                  source={{
+                    uri: e.urlToImage,
+                  }}
+                  style={styles.image}
+                />
+              </View>
+              <View style={styles.textWrapper}>
+                <Text style={styles.title}>{e.title}</Text>
+              </View>
+              <View style={styles.descriptionWrapper}>
+                <Text style={styles.description}>{e.description}</Text>
+              </View>
+            </View>
+          );
+        })}
+      </Suspense>
+    </ScrollView>
   );
 }
+
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#ffffff',
