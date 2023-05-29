@@ -1,19 +1,36 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Text, StyleSheet, View, Image } from 'react-native';
 import Authbutton from '../components/Auth-button';
 
 export default function Auth() {
+  const [image, setImage] = useState(
+    require('../../assets/components/screens/auth-screen/taxi-handshake.gif')
+  );
+  const loadingGif = () => {
+    setInterval(() => {
+      setImage(
+        require('../../assets/components/screens/auth-screen/Handshake.png')
+      );
+    }, 2500);
+  };
+  loadingGif();
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../assets/components/screens/auth-screen/Handshake.png')}
-        style={styles.headerImg}
-      />
+      <Image source={image} style={styles.headerImg} />
       <Text style={styles.header}> Let's Get Started </Text>
-
-      <Authbutton style={{ marginTop: 10 }} />
-      <Authbutton style={styles.authRec} />
-      <Authbutton style={styles.authRec} />
+      <Authbutton
+        authtitle="Signin with Google"
+        logo={require('../../assets/components/screens/auth-screen/Google.png')}
+      />
+      <Authbutton
+        authtitle="Signin with Apple"
+        logo={require('../../assets/components/screens/auth-screen/Apple.png')}
+      />
+      <Authbutton
+        authtitle="Signin with Facebook"
+        logo={require('../../assets/components/screens/auth-screen/Facebook.png')}
+      />
+      <Text style={{ marginTop: '13%' }}>Need Help ?</Text>
     </View>
   );
 }
@@ -29,13 +46,13 @@ const styles = StyleSheet.create({
   header: {
     fontStyle: 'normal',
     fontWeight: '800',
-    fontSize: 25,
+    fontSize: 20,
     lineHeight: 48,
     color: '#000000',
     marginTop: '10%',
   },
   headerImg: {
-    width: 195,
+    width: 200,
     height: 120,
     marginTop: '25%',
   },
