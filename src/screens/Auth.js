@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, Image } from 'react-native';
+import { Text, StyleSheet, View, Image, TouchableOpacity } from 'react-native';
 import Authbutton from '../components/Auth-button';
 
 export default function Auth() {
@@ -30,7 +30,9 @@ export default function Auth() {
         authtitle="Signin with Facebook"
         logo={require('../../assets/components/screens/auth-screen/Facebook.png')}
       />
-      <Text style={{ marginTop: '13%' }}>Need Help ?</Text>
+      <TouchableOpacity onPress={() => console.log('pressed')}>
+        <Text style={{ marginTop: '13%' }}>Need Help ?</Text>
+      </TouchableOpacity>
     </View>
   );
 }
