@@ -5,13 +5,16 @@ import Card from '../components/Card';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 // import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import NewsDetails from '../screens/NewsDetails';
+import Explore from '../screens/Explore';
+import Saved from '../screens/Saved';
+import Profile from '../screens/Profile';
 
 const Tab = createBottomTabNavigator();
 // const Stack = createNativeStackNavigator();
 export default function AppNavigator() {
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Card">
+      <Tab.Navigator initialRouteName="Home">
         <Tab.Screen
           name="Card"
           component={Card}
@@ -26,7 +29,9 @@ export default function AppNavigator() {
             ),
           }}
         />
-        <Tab.Screen component={NewsDetails} name="NewsDetails" />
+        <Tab.Screen component={Explore} name="Explore" />
+        <Tab.Screen component={Saved} name="Saved" />
+        <Tab.Screen component={Profile} name="Profile" />
       </Tab.Navigator>
       {/* <NewsDetails name="NewsDetails" /> */}
     </NavigationContainer>

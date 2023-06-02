@@ -5,14 +5,18 @@ import {
   Text,
   TouchableHighlight,
 } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
+import { NewsContext } from '../Context/context';
 
 export default function Authbutton({ authtitle, logo }) {
+  const { login } = useContext(NewsContext);
   return (
     <TouchableHighlight
       activeOpacity={0.6}
       underlayColor="#FAFAFA"
-      onPress={() => {}}
+      onPress={() => {
+        login();
+      }}
       style={styles.container}
     >
       <View>
