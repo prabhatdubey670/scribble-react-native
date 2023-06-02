@@ -6,7 +6,7 @@ import Context, { NewsContext } from './src/Context/context';
 
 export default function App() {
   return (
-    <Context>
+    <Context style={{ backgroundColor: '#ffffff' }}>
       <LoginState />
     </Context>
   );

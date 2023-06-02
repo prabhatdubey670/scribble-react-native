@@ -15,15 +15,22 @@ export default function Card() {
   const navigation = useNavigation();
   const { news } = useContext(NewsContext);
   const newsArticles = news && news.articles ? news.articles : [];
+
+  const navigateToNewsDetails = (article) => {
+    navigation.navigate('NewsDetails', { article });
+  };
+
   return (
     <ScrollView>
       <Suspense fallback={<Loading />}>
         {newsArticles.map((e) => {
+          const key = e.title;
           return (
             <TouchableOpacity
               style={styles.card}
-              key={e.title}
-              onPress={() => navigation.navigate('NewsDetails')}
+              key={key}
+              onPress={() => navigateToNewsDetails(e)}
+              value={{ key }}
             >
               <View style={styles.imageWrapper}>
                 <Image
@@ -34,10 +41,12 @@ export default function Card() {
                 />
               </View>
               <View style={styles.textWrapper}>
-                <Text style={styles.title}>{e.title}</Text>
+                <Text style={styles.title}>{e.title.slice(0, 50)}</Text>
               </View>
               <View style={styles.descriptionWrapper}>
-                <Text style={styles.description}>{e.description}</Text>
+                <Text style={styles.description}>
+                  {e.description.slice(0, 100)}
+                </Text>
               </View>
             </TouchableOpacity>
           );
