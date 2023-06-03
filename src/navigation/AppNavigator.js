@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Image, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import NewsDetails from '../screens/NewsDetails';
 import Explore from '../screens/Explore';
 import Saved from '../screens/Saved';
@@ -20,8 +20,15 @@ export default function AppNavigator() {
     );
   };
 
+  const MyTheme = {
+    ...DefaultTheme,
+    colors: {
+      ...DefaultTheme.colors,
+      background: '#ffffff',
+    },
+  };
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
       <Tab.Navigator
         screenOptions={{
           // headerShown: false,
@@ -46,10 +53,24 @@ export default function AppNavigator() {
             headerTitleStyle: {
               position: 'absolute',
               left: 18,
+              fontFamily: 'LibreBaskerville',
             },
             headerStyle: {
               backgroundColor: 'transparent',
               elevation: 0,
+            },
+            headerLeft: () => {
+              return (
+                <Image
+                  style={{
+                    width: 40,
+                    height: 30,
+                    position: 'relative',
+                    left: 10,
+                  }}
+                  source={require('../../assets/components/logo-main.png')}
+                />
+              );
             },
           }}
         />
