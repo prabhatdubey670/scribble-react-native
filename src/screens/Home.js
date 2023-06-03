@@ -5,6 +5,9 @@ export default function Home() {
   return (
     <>
       <View>
+        <View>
+          <Text>Main image</Text>
+        </View>
         <Text>Articles & Blogs </Text>
       </View>
       <Card />
