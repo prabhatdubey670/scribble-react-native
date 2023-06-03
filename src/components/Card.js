@@ -58,20 +58,22 @@ export default function Card() {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#ffffff',
-    height: 300,
+    backgroundColor: '#fafafa',
+    height: 90,
+    width: '90%',
     marginVertical: 15,
-    marginHorizontal: 10,
+    marginLeft: 20,
     borderRadius: 10,
     shadowColor: 'black',
     shadowOpacity: '0.25',
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
-    elevation: 5,
+    elevation: 1,
+    flex: 1,
   },
   imageWrapper: {
-    width: '100%',
-    height: '60%',
+    width: 100,
+    height: 100,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
     overflow: 'hidden',
@@ -83,6 +85,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: 10,
+    position: 'absolute',
+    left: 30,
   },
   descriptionWrapper: {
     paddingHorizontal: 15,

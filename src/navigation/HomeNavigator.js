@@ -1,15 +1,16 @@
 import { View, Text, Image } from 'react-native';
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Card from '../components/Card';
+
 import NewsDetails from '../screens/NewsDetails';
+import Home from '../screens/Home';
 const Stack = createNativeStackNavigator();
 export default function HomeNavigator({ navigate }) {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Card"
-        component={Card}
+        name="Homecard"
+        component={Home}
         options={{
           headerShown: false,
         }}
