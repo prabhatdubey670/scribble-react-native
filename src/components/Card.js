@@ -47,7 +47,7 @@ export default function Card() {
               </View>
               <View style={styles.descriptionWrapper}>
                 <Text style={styles.description}>
-                  {e.description.split(' ').slice(0, 12).join(' ')}
+                  {e.description.split(' ').slice(0, 11).join(' ')} . . .
                 </Text>
               </View>
             </TouchableOpacity>
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
   descriptionWrapper: {
     marginTop: $top + 45,
     paddingLeft: 122,
-    paddingRight: 40,
+    paddingRight: 30,
   },
   image: {
     height: '120%',
