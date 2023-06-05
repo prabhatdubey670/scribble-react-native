@@ -6,27 +6,21 @@ import LoginState from './src/utils/LoginState';
 import 'react-native-gesture-handler';
 import Context from './src/Context/context';
 
-SplashScreen.preventAutoHideAsync();
+let customFonts = {
+  LibreBaskerville: require('./assets/fonts/LibreBaskerville-Regular.ttf'),
+  LibreBaskervilleBold: require('./assets/fonts/LibreBaskerville-Bold.ttf'),
+  LibreBaskervilleItalic: require('./assets/fonts/LibreBaskerville-Italic.ttf'),
+};
 
 export default function App() {
-  const [fontsLoaded] = useFonts({
-    LibreBaskerville: require('./assets/fonts/LibreBaskerville-Regular.ttf'),
-    LibreBaskervilleBold: require('./assets/fonts/LibreBaskerville-Bold.ttf'),
-    LibreBaskervilleItalic: require('./assets/fonts/LibreBaskerville-Italic.ttf'),
-  });
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
+  const [isLoaded] = useFonts(customFonts);
+  if (!isLoaded) {
+    return console.log('error');
   }
+
   return (
     <Context>
-      <LoginState onLayout={onLayoutRootView} />
+      <LoginState />
       {/* <LoginState /> */}
     </Context>
   );
