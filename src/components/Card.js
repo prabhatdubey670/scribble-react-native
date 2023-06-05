@@ -41,11 +41,13 @@ export default function Card() {
                 />
               </View>
               <View style={styles.textWrapper}>
-                <Text style={styles.title}>{e.title.slice(0, 50)}</Text>
+                <Text style={styles.title}>
+                  {e.title.split(' ').slice(0, 6).join(' ')} . . .
+                </Text>
               </View>
               <View style={styles.descriptionWrapper}>
                 <Text style={styles.description}>
-                  {e.description.slice(0, 100)}
+                  {e.description.split(' ').slice(0, 12).join(' ')}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -55,41 +57,41 @@ export default function Card() {
     </ScrollView>
   );
 }
-
+let $top = 12;
 const styles = StyleSheet.create({
   card: {
     backgroundColor: '#fafafa',
-    height: 90,
-    width: '90%',
-    marginVertical: 15,
-    marginLeft: 20,
+    height: 125,
+    width: '95%',
+    marginVertical: 10,
+    marginHorizontal: 10,
     borderRadius: 10,
     shadowColor: 'black',
     shadowOpacity: '0.25',
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 8,
-    elevation: 1,
+    elevation: 0.5,
     flex: 1,
   },
   imageWrapper: {
     width: 100,
     height: 100,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderRadius: 10,
     overflow: 'hidden',
+    position: 'absolute',
+    top: $top,
+    left: 10,
   },
   textWrapper: {
-    height: '10%',
-    paddingHorizontal: 15,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 10,
     position: 'absolute',
-    left: 30,
+    top: $top,
+    paddingLeft: 122,
+    paddingRight: 40,
   },
   descriptionWrapper: {
-    paddingHorizontal: 15,
+    marginTop: $top + 45,
+    paddingLeft: 122,
+    paddingRight: 40,
   },
   image: {
     height: '120%',
@@ -97,9 +99,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 16,
+    fontSize: 13,
   },
   description: {
-    marginTop: 2,
+    fontSize: 11,
   },
 });
