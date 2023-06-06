@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import NewsDetails from '../screens/NewsDetails';
 import Home from '../screens/Home';
-import { DefaultTheme } from '@react-navigation/native';
+
 const Stack = createNativeStackNavigator();
 
 export default function HomeNavigator({ navigate }) {

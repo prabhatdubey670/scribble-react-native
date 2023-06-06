@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, StyleSheet } from 'react-native';
+import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import NewsDetails from '../screens/NewsDetails';
 import Explore from '../screens/Explore';
@@ -31,8 +31,6 @@ export default function AppNavigator() {
     <NavigationContainer theme={MyTheme}>
       <Tab.Navigator
         screenOptions={{
-          // headerShown: false,
-          // tabBarLabel: false,
           tabBarStyle: {
             backgroundColor: '#ffffff',
           },
@@ -47,7 +45,7 @@ export default function AppNavigator() {
             tabBarIcon: () => (
               <Image
                 style={styles.image}
-                source={require('../../assets/components/navigation-bottom/Home.png')}
+                source={require('../../assets/components/screens/home-screen/home-empty.png')}
               />
             ),
             headerTitleStyle: {
@@ -62,22 +60,69 @@ export default function AppNavigator() {
             },
             headerLeft: () => {
               return (
+                <TouchableOpacity onPress={() => console.log('press')}>
+                  <Image
+                    style={{
+                      width: 40,
+                      height: 30,
+                      position: 'relative',
+                      left: 10,
+                    }}
+                    source={require('../../assets/components/logo-main.png')}
+                  />
+                </TouchableOpacity>
+              );
+            },
+            headerRight: () => {
+              return (
                 <Image
                   style={{
-                    width: 40,
-                    height: 30,
+                    width: 20,
+                    height: 25,
                     position: 'relative',
-                    left: 10,
+                    right: 14,
                   }}
-                  source={require('../../assets/components/logo-main.png')}
+                  source={require('../../assets/components/screens/home-screen/Notification.png')}
                 />
               );
             },
           }}
         />
-        <Tab.Screen component={Explore} name="Explore" />
-        <Tab.Screen component={Saved} name="Saved" />
-        <Tab.Screen component={Profile} name="Profile" />
+        <Tab.Screen
+          component={Explore}
+          name="Explore"
+          options={{
+            tabBarIcon: () => (
+              <Image
+                style={styles.image}
+                source={require('../../assets/components/screens/home-screen/Search.png')}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          component={Saved}
+          name="Saved"
+          options={{
+            tabBarIcon: () => (
+              <Image
+                style={styles.image}
+                source={require('../../assets/components/screens/home-screen/Bookmark-empty.png')}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          component={Profile}
+          name="Profile"
+          options={{
+            tabBarIcon: () => (
+              <View
+                style={{ borderRadius: '50%', width: 30, height: 30 }}
+              ></View>
+            ),
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );

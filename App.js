@@ -10,6 +10,10 @@ let customFonts = {
   LibreBaskerville: require('./assets/fonts/LibreBaskerville-Regular.ttf'),
   LibreBaskervilleBold: require('./assets/fonts/LibreBaskerville-Bold.ttf'),
   LibreBaskervilleItalic: require('./assets/fonts/LibreBaskerville-Italic.ttf'),
+  Montserrat: require('./assets/fonts/Montserrat-Regular.ttf'),
+  MontserratBold: require('./assets/fonts/Montserrat-Bold.ttf'),
+  MontserratLight: require('./assets/fonts/Montserrat-Light.ttf'),
+  MontserratSemi: require('./assets/fonts/Montserrat-SemiBold.ttf'),
 };
 
 export default function App() {
