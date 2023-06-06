@@ -42,13 +42,19 @@ export default function Card() {
               </View>
               <View style={styles.textWrapper}>
                 <Text style={styles.title}>
-                  {e.title.split(' ').slice(0, 6).join(' ')} . . .
+                  {e.title.split(' ').slice(0, 6).join(' ')}
                 </Text>
               </View>
               <View style={styles.descriptionWrapper}>
                 <Text style={styles.description}>
-                  {e.description.split(' ').slice(0, 11).join(' ')} . . .
+                  {e.description.split(' ').slice(0, 12).join(' ')}
                 </Text>
+              </View>
+              <View>
+                <Image
+                  source={require('../../assets/components/screens/home-screen/Bookmark-filled.png')}
+                  style={styles.bookmark}
+                />
               </View>
             </TouchableOpacity>
           );
@@ -89,7 +95,7 @@ const styles = StyleSheet.create({
     paddingRight: 40,
   },
   descriptionWrapper: {
-    marginTop: $top + 45,
+    marginTop: $top + 47,
     paddingLeft: 122,
     paddingRight: 30,
   },
@@ -99,9 +105,16 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    fontSize: 13,
+    fontSize: 14,
   },
   description: {
     fontSize: 11,
+  },
+  bookmark: {
+    position: 'absolute',
+    right: '3%',
+    top: -90,
+    height: 25,
+    width: 20,
   },
 });

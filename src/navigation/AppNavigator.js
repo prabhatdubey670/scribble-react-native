@@ -52,7 +52,8 @@ export default function AppNavigator() {
             ),
             headerTitleStyle: {
               position: 'absolute',
-              left: 18,
+              left: 5,
+              top: 16,
               fontFamily: 'LibreBaskerville',
             },
             headerStyle: {
