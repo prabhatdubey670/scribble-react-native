@@ -33,6 +33,7 @@ export default function AppNavigator() {
         screenOptions={{
           tabBarStyle: {
             backgroundColor: '#ffffff',
+            height: 55,
           },
         }}
       >

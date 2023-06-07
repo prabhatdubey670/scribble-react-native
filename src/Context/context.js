@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
 const url =
-  'https://newsapi.org/v2/everything?q=Apple&from=2023-05-26&sortBy=popularity&apiKey=12735be93933463abd09d7f98cc28111 ';
+  'https://newsapi.org/v2/everything?q=jobs&from=2023-05-26&sortBy=popularity&apiKey=12735be93933463abd09d7f98cc28111 ';
 
 export const NewsContext = createContext();
 

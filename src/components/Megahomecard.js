@@ -1,12 +1,16 @@
-import { View, Text, StyleSheet } from 'react-native';
-import React from 'react';
-
+import { View, Text, StyleSheet, Image } from 'react-native';
+import React, { useContext } from 'react';
+import { NewsContext } from '../Context/context';
 export default function Megahomecard() {
+  const { news } = useContext(NewsContext);
+  const newsArticles = news && news.articles ? news.articles : [];
+
   return (
-    <View style={styles.container}>
-      <Text>Mega-card-home</Text>
-      {/* <Image /> */}
-    </View>
+    <>
+      <View style={styles.container}>
+        <Text>Mega-card-home</Text>
+      </View>
+    </>
   );
 }
 const styles = StyleSheet.create({
