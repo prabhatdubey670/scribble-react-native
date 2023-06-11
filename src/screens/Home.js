@@ -8,23 +8,32 @@ export default function Home() {
     {
       id: 1,
       title: 'All',
-      bg: '',
+      bg: '#FECE2F',
+      width: 50,
     },
     {
       id: 2,
-      title: '',
+      title: 'business',
+      bg: '#F8F6F2',
+      width: 90,
     },
     {
       id: 3,
-      title: '',
+      title: 'technology',
+      bg: '#F8F6F2',
+      width: 100,
     },
     {
       id: 4,
-      title: '',
+      title: 'entertainment',
+      bg: '#F8F6F2',
+      width: 110,
     },
     {
       id: 5,
-      title: '',
+      title: 'sports',
+      bg: '#F8F6F2',
+      width: 70,
     },
   ];
 
@@ -38,7 +47,9 @@ export default function Home() {
           <Text style={styles.fetchHeader}>Articles & Blogs </Text>
         </View>
         <ScrollView horizontal={true}>
-          <OptionButton />
+          {options.map((option) => (
+            <OptionButton key={option.id} details={option} />
+          ))}
         </ScrollView>
 
         <Card />
@@ -46,6 +57,7 @@ export default function Home() {
     </>
   );
 }
+
 const styles = StyleSheet.create({
   fetchHeader: {
     fontSize: 16,
