@@ -10,7 +10,7 @@ export default function OptionButton() {
 }
 const styles = StyleSheet.create({
   container: {
-    borderRadius: '20%',
+    borderRadius: 10,
     width: 8,
     height: 4,
     backgroundColor: 'yellow',

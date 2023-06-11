@@ -118,9 +118,7 @@ export default function AppNavigator() {
           name="Profile"
           options={{
             tabBarIcon: () => (
-              <View
-                style={{ borderRadius: '50%', width: 30, height: 30 }}
-              ></View>
+              <View style={{ borderRadius: 50, width: 30, height: 30 }}></View>
             ),
           }}
         />
