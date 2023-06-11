@@ -1,4 +1,4 @@
-import React, { useContext, Suspense } from 'react';
+import React, { useContext, useState } from 'react';
 import {
   View,
   Text,
@@ -6,12 +6,15 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  ActivityIndicator,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NewsContext } from '../Context/context';
 import Loading from './Loading';
 
 export default function Card() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigation = useNavigation();
   const { news } = useContext(NewsContext);
   const newsArticles = news && news.articles ? news.articles : [];
@@ -21,46 +24,57 @@ export default function Card() {
   };
 
   return (
-    <ScrollView>
-      <Suspense fallback={<Loading />}>
-        {newsArticles.map((e) => {
-          const key = e.title;
-          return (
-            <TouchableOpacity
-              style={styles.card}
-              key={key}
-              onPress={() => navigateToNewsDetails(e)}
-              value={{ key }}
-            >
-              <View style={styles.imageWrapper}>
-                <Image
-                  source={{
-                    uri: e.urlToImage,
-                  }}
-                  style={styles.image}
-                />
-              </View>
-              <View style={styles.textWrapper}>
-                <Text style={styles.title}>
-                  {e.title.split(' ').slice(0, 6).join(' ')}
-                </Text>
-              </View>
-              <View style={styles.descriptionWrapper}>
-                <Text style={styles.description}>
-                  {e.description.split(' ').slice(0, 12).join(' ')}
-                </Text>
-              </View>
-              <View>
-                <Image
-                  source={require('../../assets/components/screens/home-screen/Bookmark-filled.png')}
-                  style={styles.bookmark}
-                />
-              </View>
-            </TouchableOpacity>
-          );
-        })}
-      </Suspense>
-    </ScrollView>
+    <>
+      {isLoading ? (
+        // Show activity indicator loader while fetching data
+        <ActivityIndicator
+          size="large"
+          color="#0000ff"
+          style={{ margin: 20 }}
+        />
+      ) : (
+        // Render the fetched items in the view
+        <ScrollView>
+          {newsArticles.map((e) => {
+            const key = e.title;
+            return (
+              <TouchableOpacity
+                style={styles.card}
+                key={key}
+                onPress={() => navigateToNewsDetails(e)}
+                value={{ key }}
+              >
+                {/* Render the item content */}
+                <View style={styles.imageWrapper}>
+                  <Image
+                    source={{
+                      uri: e.urlToImage,
+                    }}
+                    style={styles.image}
+                  />
+                </View>
+                <View style={styles.textWrapper}>
+                  <Text style={styles.title}>
+                    {e.title.split(' ').slice(0, 6).join(' ')}
+                  </Text>
+                </View>
+                <View style={styles.descriptionWrapper}>
+                  <Text style={styles.description}>
+                    {e.description.split(' ').slice(0, 12).join(' ')}
+                  </Text>
+                </View>
+                <View>
+                  <Image
+                    source={require('../../assets/components/screens/home-screen/Bookmark-filled.png')}
+                    style={styles.bookmark}
+                  />
+                </View>
+              </TouchableOpacity>
+            );
+          })}
+        </ScrollView>
+      )}
+    </>
   );
 }
 let $top = 12;

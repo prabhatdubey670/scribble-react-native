@@ -7,22 +7,32 @@ export default function Megahomecard() {
 
   return (
     <>
-      <View style={styles.container}>
-        <Text>Mega-card-home</Text>
-      </View>
+      {newsArticles.length > 0 && (
+        <View style={styles.container} key={newsArticles[0].title}>
+          <Text>{newsArticles[0].title}</Text>
+          <Image
+            source={{ uri: newsArticles[0].urlToImage }}
+            style={styles.image}
+          />
+        </View>
+      )}
     </>
   );
 }
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    backgroundColor: '#D9D9D9',
-    borderRadius: 10,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // backgroundColor: '#D9D9D9',
+    // borderRadius: 10,
+    // width: '95%',
+    // height: 200,
+    // marginHorizontal: 12,
+  },
+  image: {
     width: '95%',
     height: 200,
     marginHorizontal: 12,
   },
-  image: {},
 });
