@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { Feather } from '@expo/vector-icons';
 import NewsDetails from '../screens/NewsDetails';
 import Explore from '../screens/Explore';
 import Saved from '../screens/Saved';
@@ -35,6 +36,7 @@ export default function AppNavigator() {
             backgroundColor: '#ffffff',
             height: 55,
           },
+          tabBarActiveTintColor: '#FECE2F',
         }}
       >
         <Tab.Screen
@@ -43,12 +45,7 @@ export default function AppNavigator() {
           options={{
             title: 'Scribble',
             tabBarLabel: 'Home',
-            tabBarIcon: () => (
-              <Image
-                style={styles.image}
-                source={require('../../assets/components/screens/home-screen/home-empty.png')}
-              />
-            ),
+            tabBarIcon: () => <Feather name="home" size={24} color="black" />,
             headerTitleStyle: {
               position: 'absolute',
               left: 5,
