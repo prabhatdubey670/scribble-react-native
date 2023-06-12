@@ -9,7 +9,7 @@ export default function Megahomecard() {
     <>
       {newsArticles.length > 0 && (
         <View style={styles.container} key={newsArticles[0].title}>
-          <Text>{newsArticles[0].title}</Text>
+          <Text style={styles.text}>{newsArticles[0].title}</Text>
           <Image
             source={{ uri: newsArticles[0].urlToImage }}
             style={styles.image}
@@ -24,15 +24,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: '#D9D9D9',
-    // borderRadius: 10,
-    // width: '95%',
-    // height: 200,
-    // marginHorizontal: 12,
   },
   image: {
     width: '95%',
     height: 200,
-    marginHorizontal: 12,
+    marginHorizontal: 13,
+    borderRadius: 10,
+  },
+  text: {
+    color: 'black',
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'white',
+    top: 130,
+    left: 20,
+    width: '80%',
+    position: 'absolute',
+    zIndex: 1,
   },
 });

@@ -35,7 +35,7 @@ export default function Card() {
       ) : (
         // Render the fetched items in the view
         <ScrollView>
-          {newsArticles.map((e) => {
+          {newsArticles.slice(1).map((e) => {
             const key = e.title;
             return (
               <TouchableOpacity
