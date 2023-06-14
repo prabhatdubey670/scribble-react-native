@@ -1,7 +1,7 @@
 import { View, Text, ActivityIndicator } from 'react-native';
 import { React, useContext } from 'react';
 import { NewsContext } from '../Context/context';
-import AppNavigator from '../navigation/AppNavigator';
+import AppNavigator from '../route/AppNavigator';
 import Auth from '../screens/Auth';
 
 export default function LoginState() {

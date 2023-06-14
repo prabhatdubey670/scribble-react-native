@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     elevation: 0.5,
     flex: 1,
+    overflow: 'hidden',
   },
   imageWrapper: {
     width: 100,
