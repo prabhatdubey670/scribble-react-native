@@ -79,6 +79,7 @@ export default function AppNavigator() {
                     height: 25,
                     position: 'relative',
                     right: 14,
+                    top: 4.5,
                   }}
                   source={require('../../assets/components/screens/home-screen/Notification.png')}
                 />

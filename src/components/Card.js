@@ -10,7 +10,6 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NewsContext } from '../Context/context';
-import Loading from './Loading';
 
 export default function Card() {
   const [isLoading, setIsLoading] = useState(false);
@@ -60,7 +59,7 @@ export default function Card() {
                 </View>
                 <View style={styles.descriptionWrapper}>
                   <Text style={styles.description}>
-                    {e.description.split(' ').slice(0, 12).join(' ')}
+                    {e.description.split(' ').slice(0, 10).join(' ')} . . .
                   </Text>
                 </View>
                 <View>
@@ -69,6 +68,7 @@ export default function Card() {
                     style={styles.bookmark}
                   />
                 </View>
+                <Text style={styles.timeInfo}>{e.publishedAt}</Text>
               </TouchableOpacity>
             );
           })}
@@ -104,13 +104,13 @@ const styles = StyleSheet.create({
     left: 10,
   },
   textWrapper: {
-    position: 'absolute',
+    position: 'relative',
     top: $top,
     paddingLeft: 122,
     paddingRight: 40,
   },
   descriptionWrapper: {
-    marginTop: $top + 47,
+    marginTop: 10,
     paddingLeft: 122,
     paddingRight: 30,
   },
@@ -126,10 +126,18 @@ const styles = StyleSheet.create({
     fontSize: 11,
   },
   bookmark: {
-    position: 'absolute',
-    right: '3%',
-    top: -90,
+    position: 'relative',
+    top: -80,
+    left: 340,
+    zIndex: 1,
     height: 25,
     width: 20,
+  },
+  timeInfo: {
+    left: 122,
+    fontSize: 11,
+    top: -30,
+    fontFamily: 'MontserratSemi',
+    marginTop: '3%',
   },
 });

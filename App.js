@@ -19,7 +19,7 @@ let customFonts = {
 export default function App() {
   const [isLoaded] = useFonts(customFonts);
   if (!isLoaded) {
-    return console.log('error');
+    return null;
   }
 
   return (
