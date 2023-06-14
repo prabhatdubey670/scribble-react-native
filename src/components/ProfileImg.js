@@ -12,6 +12,7 @@ export default function ProfileImg({ dimensions }) {
           position: dimensions.position,
           left: dimensions.left,
           top: dimensions.top,
+          backgroundColor: dimensions.bg,
         },
       ]}
     >
