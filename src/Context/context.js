@@ -10,6 +10,7 @@ export default function Context({ children }) {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [userToken, setUserToken] = useState(null);
+  const [bookmark, setBookmark] = useState([]);
 
   // auth using jwt token
   const login = () => {

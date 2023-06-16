@@ -5,6 +5,7 @@ export default function ExploreCard() {
   return (
     <View>
       <Text>ExploreCard</Text>
+      
     </View>
   );
 }

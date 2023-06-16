@@ -14,6 +14,8 @@ import { NewsContext } from '../Context/context';
 export default function Card() {
   const [isLoading, setIsLoading] = useState(false);
 
+  const [isBookmarked, setIsBookmarked] = useState(false);
+
   const navigation = useNavigation();
   const { news } = useContext(NewsContext);
   const newsArticles = news && news.articles ? news.articles : [];
@@ -37,39 +39,50 @@ export default function Card() {
           {newsArticles.slice(1).map((e) => {
             const key = e.title;
             return (
-              <TouchableOpacity
-                style={styles.card}
-                key={key}
-                onPress={() => navigateToNewsDetails(e)}
-                value={{ key }}
-              >
-                {/* Render the item content */}
-                <View style={styles.imageWrapper}>
-                  <Image
-                    source={{
-                      uri: e.urlToImage,
-                    }}
-                    style={styles.image}
-                  />
-                </View>
-                <View style={styles.textWrapper}>
-                  <Text style={styles.title}>
-                    {e.title.split(' ').slice(0, 6).join(' ')}
-                  </Text>
-                </View>
-                <View style={styles.descriptionWrapper}>
-                  <Text style={styles.description}>
-                    {e.description.split(' ').slice(0, 10).join(' ')} . . .
-                  </Text>
-                </View>
-                <View>
-                  <Image
-                    source={require('../../assets/components/screens/home-screen/Bookmark-filled.png')}
-                    style={styles.bookmark}
-                  />
-                </View>
-                <Text style={styles.timeInfo}>{e.publishedAt}</Text>
-              </TouchableOpacity>
+              <>
+                <TouchableOpacity
+                  style={styles.card}
+                  key={key}
+                  onPress={() => navigateToNewsDetails(e)}
+                  value={{ key }}
+                >
+                  {/* Render the item content */}
+                  <View style={styles.imageWrapper}>
+                    <Image
+                      source={{
+                        uri: e.urlToImage,
+                      }}
+                      style={styles.image}
+                    />
+                  </View>
+                  <View style={styles.textWrapper}>
+                    <Text style={styles.title}>
+                      {e.title.split(' ').slice(0, 6).join(' ')}
+                    </Text>
+                  </View>
+                  <View style={styles.descriptionWrapper}>
+                    <Text style={styles.description}>
+                      {e.description.split(' ').slice(0, 10).join(' ')} . . .
+                    </Text>
+                  </View>
+
+                  {isBookmarked ? (
+                    <Image
+                      source={require('../../assets/components/screens/home-screen/Bookmark-filled.png')}
+                      style={styles.bookmark}
+                      onClick={() => setIsBookmarked(false)}
+                    />
+                  ) : (
+                    <Image
+                      source={require('../../assets/components/screens/home-screen/Bookmark-empty.png')}
+                      style={styles.bookmark}
+                      onClick={() => setIsBookmarked(true)}
+                    />
+                  )}
+
+                  <Text style={styles.timeInfo}>{e.publishedAt}</Text>
+                </TouchableOpacity>
+              </>
             );
           })}
         </ScrollView>
@@ -129,7 +142,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     top: -80,
     left: 340,
-    zIndex: 1,
+    zIndex: 5,
     height: 25,
     width: 20,
   },
