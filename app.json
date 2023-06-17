@@ -4,7 +4,7 @@
     "slug": "Scribble",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Group 15.png",
     "userInterfaceStyle": "light",
     "jsEngine": "hermes",
     "splash": {
@@ -23,12 +23,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/components/logo-main.png",
+        "foregroundImage": "./assets/Group 15.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/Group 15.png"
     }
     
   }

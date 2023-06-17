@@ -24,6 +24,8 @@ export default function Card() {
     navigation.navigate('NewsDetails', { article });
   };
 
+  const setSingleBookmark = () => {};
+
   return (
     <>
       {isLoading ? (
@@ -67,17 +69,19 @@ export default function Card() {
                   </View>
 
                   {isBookmarked ? (
-                    <Image
-                      source={require('../../assets/components/screens/home-screen/Bookmark-filled.png')}
-                      style={styles.bookmark}
-                      onClick={() => setIsBookmarked(false)}
-                    />
+                    <TouchableOpacity onPress={() => setIsBookmarked(false)}>
+                      <Image
+                        source={require('../../assets/components/screens/home-screen/Bookmark-filled.png')}
+                        style={styles.bookmark}
+                      />
+                    </TouchableOpacity>
                   ) : (
-                    <Image
-                      source={require('../../assets/components/screens/home-screen/Bookmark-empty.png')}
-                      style={styles.bookmark}
-                      onClick={() => setIsBookmarked(true)}
-                    />
+                    <TouchableOpacity onPress={() => setIsBookmarked(true)}>
+                      <Image
+                        source={require('../../assets/components/screens/home-screen/Bookmark-empty.png')}
+                        style={styles.bookmark}
+                      />
+                    </TouchableOpacity>
                   )}
 
                   <Text style={styles.timeInfo}>{e.publishedAt}</Text>
@@ -142,7 +146,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     top: -80,
     left: 340,
-    zIndex: 5,
+    zIndex: 100,
     height: 25,
     width: 20,
   },
