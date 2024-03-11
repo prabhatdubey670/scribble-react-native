@@ -59,12 +59,13 @@ export default function Card() {
                   </View>
                   <View style={styles.textWrapper}>
                     <Text style={styles.title}>
-                      {e.title.split(' ').slice(0, 6).join(' ')}
+                      {/* Issue */}
+                      {/* {e.title.split('').slice(0, 6).join(' ')} */}
                     </Text>
                   </View>
                   <View style={styles.descriptionWrapper}>
                     <Text style={styles.description}>
-                      {e.description.split(' ').slice(0, 10).join(' ')} . . .
+                      {/* {e.description.split('').slice(0, 10).join(' ')} . . . */}
                     </Text>
                   </View>
 
